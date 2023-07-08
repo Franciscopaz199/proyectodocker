@@ -1,0 +1,23 @@
+{% extends "base.html"%}
+
+{%block contenido%}
+<div class="container-fluid">
+    <div class="d-flex justify-content-center">
+      <form class="form-inline my-2 my-lg-0" action="{% url 'fecha' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+
+          <label for="fecha">Fecha:  </label>
+          <input type="date" class="form-control" style="margin-left: 15px; margin-right: 15px;" id="fecha" name="fecha" required>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </div>
+      </form>
+    </div>
+  
+    <div class="card-deck mt-4">
+        
+    </div>
+  </div>
+
+
+{%endblock%}

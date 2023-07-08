@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Tareas Atrasadas{% endblock %}
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Tareas del mes actual</h1>
+            <hr>
+            <div class="table-responsive">
+                <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr class="table-primary">
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Fecha Limite</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for tarea in tareas %}
+                          <tr >
+                            <td>{{ tarea.nombre }}</td>
+                            <td>{{ tarea.fecha }}</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

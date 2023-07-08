@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Tareas Atrasadas{% endblock %}
+{% block contenido %}
+<div class="container">
+    {% if messages %}
+
+    {% for message in messages %}
+    <div class="container">
+        <div class="alert alert-info" role="alert" style="margin-top: 30px;">
+            {{ message }}
+        </div>
+    </div>
+
+    {% endfor %}
+
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Tareas Atrasadas</h1>
+            <hr>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Fecha Limite</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tarea in tareas %}
+                    <tr>
+                        <td>{{ tarea.nombre }}</td>
+                        <td>{{ tarea.fecha }}</td>
+                        <td>
+                            <form action="{% url 'eliminartarea' %}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="id" value="{{ tarea.id }}">
+                                <input type="hidden" name="atrasada" value="1">
+                                <input type="submit" value="Eliminar" class="btn btn-danger">
+
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

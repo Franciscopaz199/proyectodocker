@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+
+{% block contenido %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 " style="height:calc(100vh - 70px); display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                <h3>Tareas pendientes</h3>
+                <p>La cantidad de tareas pendientes es:</p> <h1>{{tamano}}</h1> 
+            </div>
+        </div>
+    </div>
+{% endblock %}

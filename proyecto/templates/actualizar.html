@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block css%}
+
+{%endblock%}
+{%block contenido%}
+   <div class="container">
+    <form action="{% url 'actualizartarea' %}" method="post">
+        <input type="hidden" value={{tarea.id}} name="id">
+        {% csrf_token %}
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input required type="text" name="nombre"  class="form-control" id="nombre" placeholder="Ingresa el nombre de la Tarea"  value ="{{tarea.nombre}}">
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea required class="form-control" id="descripcion" name="descripcion"  rows="3" placeholder="Ingresa una breve descripción">{{tarea.descripcion}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="fecha">Fecha:</label>
+        <input required type="date" class="form-control" id="fecha" name="fecha" value={{tarea.fecha}} >
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+   </div> 
+
+   {% if messages %}
+
+    {% for message in messages %}
+    <div class="container">
+        <div class="alert alert-success" role="alert" style="margin-top: 30px;">
+            {{ message }}
+        </div>
+    </div>
+    
+    {% endfor %}
+
+    {% endif %}
+
+    
+    
+{%endblock%}
+
